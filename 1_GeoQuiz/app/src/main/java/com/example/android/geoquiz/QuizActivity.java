@@ -16,6 +16,9 @@ public class QuizActivity extends AppCompatActivity {
     private static final String TAG = "QuizActivity";
     public static final String KEY_INDEX = "index";
 
+    private int numberCorrect = 0;
+    private int numberWrong = 0;
+
     private Button mTrueButton;
     private Button mFalseButton;
     private ImageButton mNextButton;
@@ -141,6 +144,7 @@ public class QuizActivity extends AppCompatActivity {
         mQuestionTextView.setText(question);
         mTrueButton.setEnabled(true);
         mFalseButton.setEnabled(true);
+        Toast.makeText(this, "Current Score: " + numberCorrect + " Correct; " + numberWrong + " Wrong", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -151,8 +155,10 @@ public class QuizActivity extends AppCompatActivity {
 
         if (userPressedTrue == answerIsTrue) {
             messageResId = R.string.correct_toast;
+            numberCorrect++;
         } else {
             messageResId = R.string.incorrect_toast;
+            numberWrong++;
         }
 
         mTrueButton.setEnabled(false);
