@@ -139,6 +139,8 @@ public class QuizActivity extends AppCompatActivity {
     private void updateQuestion() {
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
+        mTrueButton.setEnabled(true);
+        mFalseButton.setEnabled(true);
 
     }
 
@@ -152,6 +154,9 @@ public class QuizActivity extends AppCompatActivity {
         } else {
             messageResId = R.string.incorrect_toast;
         }
+
+        mTrueButton.setEnabled(false);
+        mFalseButton.setEnabled(false);
 
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
     }
